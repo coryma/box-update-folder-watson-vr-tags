@@ -57,8 +57,8 @@ $ npm install
 
 1. 將 endpoint.template.json 改名為 endpoint.json
 2. 打開 endpoint.json
-* 將 [步驟 2](#步驟-2.-建立一個-Box-應用程式)中所產生的 json 檔中的 "boxAppSettings" 內容，複製到 endpoint.json 中
-* 將 [步驟 2](#步驟 2. 建立一個-Box-應用程式) 中所記錄的 `使用者 ID` 及 `企業 ID` 填入 `enterpriseID` 及 `userID` 中
+* 將 [步驟 2](%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F)中所產生的 json 檔中的 "boxAppSettings" 內容，複製到 endpoint.json 中
+* 將 [步驟 2](%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所記錄的 `使用者 ID` 及 `企業 ID` 填入 `enterpriseID` 及 `userID` 中
 3. 將 folder ID 填入 `folderID`
 > **Note**: folder ID 可以從資料夾在 box 的 url 中獲取
 4. 將 [步驟 1](#步驟-1.-建立-Visual-Recognition-服務) 中所記錄的 Watson Visual Recognition `API金鑰` 值 複製至 `api_key` 中
