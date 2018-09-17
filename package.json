@@ -1,0 +1,30 @@
+{
+  "name": "box-update-folder-watson-vr-tags",
+  "version": "1.0.0",
+  "description": "Use Watson Visual Recognition to classify and tag the image files in specified Box folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "box-node-sdk": "^1.19.0",
+    "sort-by": "^1.2.0",
+    "watson-developer-cloud": "^3.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coryma/box-update-folder-watson-vr-tags.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coryma/box-update-folder-watson-vr-tags/issues"
+  },
+  "homepage": "https://github.com/coryma/box-update-folder-watson-vr-tags#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/node": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}

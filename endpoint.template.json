@@ -1,0 +1,23 @@
+{
+    "boxConfig": {
+        "boxAppSettings": {
+            "clientID": "",
+            "clientSecret": "",
+            "appAuth": {
+                "publicKeyID": "",
+                "privateKey": "",
+                "passphrase": ""
+            }
+        },
+        "enterpriseID": "",
+        "folderID": "",
+        "userID": ""
+    },
+    "watsonConfig": {
+        "api_key": "", 
+        "api_version": "2018-03-19",
+        "api_owner": ["IBM"],
+        "threshold": 0.6,
+        "language": "zh-tw"
+    }
+}
