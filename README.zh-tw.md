@@ -56,8 +56,9 @@ $ npm install
     * 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所產生的 json 檔中的 "boxAppSettings" 內容，複製到 endpoint.json 中
     * 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所記錄的 `使用者 ID` 及 `企業 ID` 填入 `enterpriseID` 及 `userID` 中
 3. 將 folder ID 填入 `folderID`
-    > **Note**: folder ID 可以從資料夾在 box 的 url 中獲取
+    > **Note**: 使用瀏覽器打開你所要處理的 box 資料夾，folder ID 會在 url 的最後面
 4. 將 [步驟 1](#%E6%AD%A5%E9%A9%9F-1-%E5%BB%BA%E7%AB%8B-visual-recognition-%E6%9C%8D%E5%8B%99) 中所記錄的 Watson Visual Recognition `API金鑰` 值 複製至 `api_key` 中
+5. 儲存 endpoint.json 
 
 ##### 步驟 5. 執行
 
@@ -66,3 +67,4 @@ $ npm install
 babel-node index.js
 
 ```
+使用瀏覽器打開所處理的 box 資料夾，畫面上每個檔案名下方會出現由 Watson Visual Recognition 自動判別並分類後產生之標籤
