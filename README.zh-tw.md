@@ -27,45 +27,37 @@
 ##### 步驟 2. 建立一個 Box 應用程式
 
 1. 登入 [Box Developer Console](https://developer.box.com)
-* 點選 **Console**
+    * 點選 **Console**
 2. 選擇 **建立新應用程式**
-* 選擇 **自訂應用程式** 並點選 **下一步**
-* 選擇 **OAuth 2.0 搭配 JWT (伺服器認證)**  並點選 **下一步**
-* 設定應用程式名 "Box Watson VR - YOUR NAME"
-*  *應用程式名不可跟Box其中的應用程式名重複*
-* 按下 **建立應用程式** 接下來點選 **檢視您的應用程式**
+    * 選擇 **自訂應用程式** 並點選 **下一步**
+    * 選擇 **OAuth 2.0 搭配 JWT (伺服器認證)**  並點選 **下一步**
+    * 設定應用程式名 "Box Watson VR - YOUR NAME"
+    *  *應用程式名不可跟Box其中的應用程式名重複*
+    * 按下 **建立應用程式** 接下來點選 **檢視您的應用程式**
 3. 於畫面左邊選項，點選 **一般**
-* 將 `使用者 ID` 及 `企業 ID` 值複製及記錄下來
+    * 將 `使用者 ID` 及 `企業 ID` 值複製及記錄下來
 4. 於 **應用程式存取權限** 選擇 **企業**
 5. 移至畫面下方之 **新增與管理公開金鑰** 點選 **產生公開/私密金鑰組**
-* 保管好系統產生出之 json 檔
+    * 保管好系統產生出之 json 檔
   
 ##### 步驟 3. 安裝
 
-
 ```
-
 $ git clone https://github.com/coryma/box-update-folder-watson-vr-tags.git # or fork and clone your own
-
 $ cd box-update-folder-watson-vr-tags
-
 $ npm install
-
 ```
-
 ##### 步驟 4. 設定相關參數
 
 1. 將 endpoint.template.json 改名為 endpoint.json
 2. 打開 endpoint.json
-* 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所產生的 json 檔中的 "boxAppSettings" 內容，複製到 endpoint.json 中
-* 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所記錄的 `使用者 ID` 及 `企業 ID` 填入 `enterpriseID` 及 `userID` 中
+    * 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所產生的 json 檔中的 "boxAppSettings" 內容，複製到 endpoint.json 中
+    * 將 [步驟 2](#%E6%AD%A5%E9%A9%9F-2-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B-box-%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F) 中所記錄的 `使用者 ID` 及 `企業 ID` 填入 `enterpriseID` 及 `userID` 中
 3. 將 folder ID 填入 `folderID`
-> **Note**: folder ID 可以從資料夾在 box 的 url 中獲取
+    > **Note**: folder ID 可以從資料夾在 box 的 url 中獲取
 4. 將 [步驟 1](#%E6%AD%A5%E9%A9%9F-1-%E5%BB%BA%E7%AB%8B-visual-recognition-%E6%9C%8D%E5%8B%99) 中所記錄的 Watson Visual Recognition `API金鑰` 值 複製至 `api_key` 中
 
 ##### 步驟 5. 執行
-
-$ npm install
 
 ```bash
 
