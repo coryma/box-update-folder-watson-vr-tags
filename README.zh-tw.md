@@ -1,6 +1,8 @@
 # box-update-folder-watson-vr-tags
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT  "Feel free to contribute.")
 
+*其他語言: [English](README.md), [繁體中文](README.zh-tw.md).*
+
 介紹如何使用 Watson Visual Recognition 針對在 Box 中特定的資料夾中的檔案，進行影像特徵分類，將分類的結果以標籤形式加入檔案中
 
 ### 準備工作
