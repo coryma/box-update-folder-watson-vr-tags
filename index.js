@@ -27,39 +27,42 @@ var visualRecognition = new VisualRecognitionV3({
 
 //Fetach the file items in the folder
 boxClient.folders.getItems(folderID, null, (err, items) => {
+    
     if (err) {
-        console.log(err)
-    } else {
-        for (const item of items.buffer) {
-            let fileID = item.id
-
-            //Read file stream
-            boxClient.files.getReadStream(fileID, null, (err, stream) => {
-
-                const params = {
-                    images_file: stream,
-                    threshold: watsonConfig.threshold,
-                    owners: watsonConfig.api_owner
-                }
-
-                visualRecognition.classify(params, (err, res) => {
-
-                    if (err) {
-                        console.error("visualRecognition.classify Error!", err)
-                    } else {
-                        console.log(res.images[0].classifiers[0])
-                        let watsonTags = res.images[0].classifiers[0].classes
-                        watsonTags = watsonTags.sort(
-                            sortBy('-score')).slice(0, 5).map((item) => {
-                                return `${item.class} `
-                            })
-
-                        boxClient.files.update(fileID, { "tags": watsonTags })
-                    }
-                })
-            })
-        }
+        console.log(err.message)
+        process.exit(err)
     }
+
+    for (const item of items.buffer) {
+        let fileID = item.id
+
+        //Read file stream
+        boxClient.files.getReadStream(fileID, null, (err, stream) => {
+
+            const params = {
+                images_file: stream,
+                threshold: watsonConfig.threshold,
+                owners: watsonConfig.api_owner
+            }
+
+            visualRecognition.classify(params, (err, res) => {
+
+                if (err) {
+                    console.error("visualRecognition.classify Error!", err)
+                } else {
+                    console.log(res.images[0].classifiers[0])
+                    let watsonTags = res.images[0].classifiers[0].classes
+                    watsonTags = watsonTags.sort(
+                        sortBy('-score')).slice(0, 5).map((item) => {
+                            return `${item.class} `
+                        })
+
+                    boxClient.files.update(fileID, { "tags": watsonTags })
+                }
+            })
+        })
+    }
+
 
 })
 
