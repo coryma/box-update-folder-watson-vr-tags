@@ -11,7 +11,7 @@
 - [Node.js](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/)
 - [Box Developer Account](https://developer.box.com/)
-	* 若還沒有 Box 帳號，可點選"[Get Started](https://account.box.com/signup/n/developer)"註冊一個開發者帳戶
+	* 若還沒有 Box 帳號，可點選**[Get Started](https://account.box.com/signup/n/developer)**註冊一個開發者帳戶
 - [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview)
 
   
