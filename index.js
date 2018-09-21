@@ -7,17 +7,14 @@ const boxConfig = endpoint.boxConfig
 const watsonConfig = endpoint.watsonConfig
 
 //Initialize Box  SDK
-const boxSDK = BoxSDK.getPreconfiguredInstance(boxConfig)
-boxSDK.configure({ iterators: true });
-
-// The Box Folder ID which will be tagged 
-const folderID = boxConfig.folderID
+const sdk = BoxSDK.getPreconfiguredInstance(boxConfig)
+sdk.configure({ iterators: true })
 
 // Get an app user client
-const boxClient = boxSDK.getAppAuthClient('user', boxConfig.userID)
+const client = sdk.getAppAuthClient('user', boxConfig.userID)
 
 //Initialize Watson Visual Recognition SDK
-var visualRecognition = new VisualRecognitionV3({
+const visualRecognition = new VisualRecognitionV3({
     version: watsonConfig.api_version,
     iam_apikey: watsonConfig.api_key,
     headers: {
@@ -25,44 +22,32 @@ var visualRecognition = new VisualRecognitionV3({
     }
 });
 
-//Fetach the file items in the folder
-boxClient.folders.getItems(folderID, null, (err, items) => {
-    
-    if (err) {
-        console.log(err.message)
-        process.exit(err)
-    }
+const main = async () => {
+
+    let items = await client.folders.getItems(boxConfig.folderID)
 
     for (const item of items.buffer) {
-        let fileID = item.id
+        const fileID = item.id
 
-        //Read file stream
-        boxClient.files.getReadStream(fileID, null, (err, stream) => {
+        const params = {
+            images_file: await client.files.getReadStream(fileID),
+            threshold: watsonConfig.threshold,
+            owners: watsonConfig.api_owner
+        }
 
-            const params = {
-                images_file: stream,
-                threshold: watsonConfig.threshold,
-                owners: watsonConfig.api_owner
+        visualRecognition.classify(params, (err, res) => {
+            if (!err) {
+                console.log(res.images[0].classifiers[0])
+                var watsonTags = res.images[0].classifiers[0].classes.sort(sortBy('-score')).slice(0, 5).map((item) => {
+                    return `${item.class} `
+                })
+                client.files.update(fileID, { "tags": watsonTags })
             }
-
-            visualRecognition.classify(params, (err, res) => {
-
-                if (err) {
-                    console.error("visualRecognition.classify Error!", err)
-                } else {
-                    console.log(res.images[0].classifiers[0])
-                    let watsonTags = res.images[0].classifiers[0].classes
-                    watsonTags = watsonTags.sort(
-                        sortBy('-score')).slice(0, 5).map((item) => {
-                            return `${item.class} `
-                        })
-
-                    boxClient.files.update(fileID, { "tags": watsonTags })
-                }
-            })
         })
     }
+}
+
+main()
 
 
-})
 
