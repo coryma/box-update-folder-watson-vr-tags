@@ -1,3 +1,4 @@
+'use strict;'
 import VisualRecognitionV3 from 'watson-developer-cloud/visual-recognition/v3'
 import BoxSDK from 'box-node-sdk'
 import endpoint from './endpoint.json'
@@ -23,22 +24,22 @@ const visualRecognition = new VisualRecognitionV3({
 });
 
 const main = async () => {
-
-    let items = await client.folders.getItems(boxConfig.folderID)
-
+   
+    const items = await client.folders.getItems(boxConfig.folderID)
+   
     for (const item of items.buffer) {
+   
         const fileID = item.id
-
         const params = {
             images_file: await client.files.getReadStream(fileID),
             threshold: watsonConfig.threshold,
             owners: watsonConfig.api_owner
         }
-
+   
         visualRecognition.classify(params, (err, res) => {
             if (!err) {
                 console.log(res.images[0].classifiers[0])
-                var watsonTags = res.images[0].classifiers[0].classes.sort(sortBy('-score')).slice(0, 5).map((item) => {
+                const watsonTags = res.images[0].classifiers[0].classes.sort(sortBy('-score')).slice(0, 5).map((item) => {
                     return `${item.class} `
                 })
                 client.files.update(fileID, { "tags": watsonTags })
